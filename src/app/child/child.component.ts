@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -7,5 +7,20 @@ import { Component } from '@angular/core';
   styleUrl: './child.component.css'
 })
 export class ChildComponent {
+  a = input.required<number>();
+  b = input.required<number>();
+
+  @Output() resultEvent = new EventEmitter<string>();
+  resultValue:number | any = '';
+
+  sum(a:number, b:number) {
+    this.resultValue = a+b;
+    this.resultEvent.emit(this.resultValue)
+  }
+
+  minus(a:number, b:number) {
+    this.resultValue = a-b;
+    this.resultEvent.emit(this.resultValue)
+  }
 
 }

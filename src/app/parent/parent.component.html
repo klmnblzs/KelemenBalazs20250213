@@ -1,1 +1,4 @@
-<p>parent works!</p>
+<input type="number" [(ngModel)]="a" placeholder="a">
+<input type="number" [(ngModel)]="b" placeholder="b">
+<app-child [a]="a" [b]="b" (resultEvent)="getResult($event)"></app-child>
+<p>{{ result === null ? 'nincs eredmény' : 'eredmény: ' + result }}</p>
